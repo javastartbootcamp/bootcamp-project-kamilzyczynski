@@ -9,6 +9,7 @@ import pl.javastart.bootcamp.domain.training.TrainingCategory;
 import pl.javastart.bootcamp.domain.training.TrainingFirstDateComparator;
 import pl.javastart.bootcamp.domain.training.TrainingService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller

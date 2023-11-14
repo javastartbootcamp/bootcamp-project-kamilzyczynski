@@ -215,47 +215,50 @@
     </div>
 
     <div class="section">
-        <div class="container">
-            <h2 id="szkolenia" class="mb-4">Planowane <span class="colorful-header">terminy</span></h2>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Nazwa szkolenia</th>
-                        <th>Rodzaj</th>
-                        <th>Cena</th>
-                        <th>Data rozpoczęcia</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="training: ${trainings}">
-                        <td>
-                            <a th:href="'/szkolenie/' + ${training.description.url}"
-                               th:text="${training.description.title}" class="underline"></a>
-                        </td>
-                        <td th:text="${training.type}"></td>
-                        <td th:if="${training.price != training.regularPrice}">
+    <div class="container">
+        <h2 id="szkolenia" class="mb-4">Planowane <span class="colorful-header">terminy</span></h2>
+        <div class="table-responsive">
+            <table th:if="${trainings.size() > 0}" class="table">
+                <thead>
+                <tr>
+                    <th>Nazwa szkolenia</th>
+                    <th>Rodzaj</th>
+                    <th>Cena</th>
+                    <th>Data rozpoczęcia</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="training: ${trainings}">
+                    <td>
+                        <a th:href="'/szkolenie/' + ${training.description.url}"
+                           th:text="${training.description.title}" class="underline"></a>
+                    </td>
+                    <td th:text="${training.type}"></td>
+                    <td th:if="${training.price != training.regularPrice}">
                             <span style="text-decoration: line-through;"
                                   th:text="|${#numbers.formatDecimal(training.regularPrice, 0, 'NONE', 0, 'COMMA')} zł|">5000 zł</span>
-                            <b th:text="|${#numbers.formatDecimal(training.price, 0, 'NONE', 0, 'COMMA')} zł|"></b>
-                        </td>
-                        <td th:unless="${training.price != training.regularPrice}">
-                            <span th:text="|${#numbers.formatDecimal(training.price, 0, 'NONE', 0, 'COMMA')} zł|"></span>
-                        </td>
-                        <td th:text="${training.dates.split(', ')[0]}"></td>
-                        <td>
-                            <a th:href="'/szkolenie/' + ${training.description.url} + '/' + ${training.id}">
-                                <button class="btn btn-primary">Szczegóły i zapisy</button>
-                            </a>
-                        </td>
-                    </tr>
+                        <b th:text="|${#numbers.formatDecimal(training.price, 0, 'NONE', 0, 'COMMA')} zł|"></b>
+                    </td>
+                    <td th:unless="${training.price != training.regularPrice}">
+                        <span th:text="|${#numbers.formatDecimal(training.price, 0, 'NONE', 0, 'COMMA')} zł|"></span>
+                    </td>
+                    <td th:text="${training.dates.split(', ')[0]}"></td>
+                    <td>
+                        <a th:href="'/szkolenie/' + ${training.description.url} + '/' + ${training.id}">
+                            <button class="btn btn-primary">Szczegóły i zapisy</button>
+                        </a>
+                    </td>
+                </tr>
 
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
+        <p th:if="${trainings.size() < 1}">
+            Aktualnie brak planowanych szkoleń. Skontaktuj się z nami za pomocą maila lub telefonicznie.
+        </p>
     </div>
+</div>
 
     <div class="section section-finansowanie">
 
