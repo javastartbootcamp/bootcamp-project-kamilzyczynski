@@ -22,6 +22,7 @@
             <th>Nazwa szkolenia</th>
             <th>Zobacz</th>
             <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         </thead>
         <tbody>
@@ -33,8 +34,10 @@
             <td>
                 <a th:href="'/admin/opisy/' + ${description.id} + '/edytuj'">Edytuj</a>
             </td>
+            <td>
+                <a th:href="'/admin/opisy/' + ${description.id} + '/usun'">Usuń</a>
+            </td>
         </tr>
-
         </tbody>
     </table>
 
